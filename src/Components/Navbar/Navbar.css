@@ -1,10 +1,10 @@
 .Navbar {
-  position: fixed;
+  position: sticky;
+  top: 0;
   display: flex;
-  padding-left: 5px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0;
   background-color: rgb(232, 237, 238);
   position: fixed;
   width: 100vw;
@@ -12,7 +12,7 @@
 }
 
 .placeSearch {
-  margin-left: 25px;
+  margin-left: 5px;
   width: 16em;
   height: 42px;
   display: flex;
@@ -30,8 +30,8 @@
 }
 
 .productSearch {
-  margin-left: 18px;
-  width: 75em;
+  margin-left: 5px;
+  width: 72em;
   height: 42px;
   border: 2px solid #002f34;
   border-radius: 4px;
@@ -88,7 +88,7 @@
     white-space: normal;
     text-overflow: ellipsis;
     font-weight: bolder;
-    margin-right: 5px;
+
   }
   
   .span {
@@ -101,7 +101,6 @@
   }
 
   .loginPage{
-    margin-left: 25px;
     font-weight: bolder;
   }
   .loginPage hr {
@@ -116,7 +115,7 @@
 
   
 .sellMenu {
-    margin-left: 22px;
+  margin-right: 40px;
     position: relative;
     cursor: pointer;
   }

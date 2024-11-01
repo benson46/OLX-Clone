@@ -13,7 +13,7 @@ const Navbar = () => {
 
             <div className="placeSearch">
                 <Search></Search>
-                <input type="text" placeholder='Search City , area or loc...' value="India" />
+                <input type="text" placeholder='Search City , area or loc...' defaultValue="India" />
                 <Arrow></Arrow>
             </div>
 
