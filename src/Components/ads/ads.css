@@ -1,0 +1,36 @@
+.ads {
+  width: 100%;
+  position: relative;
+  top: 70px;
+  margin-top: 10px;
+}
+
+.ads img {
+  width: 100%;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  justify-content: center;
+  width: 100%;
+}
+
+.allCategory {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.allCategory a {
+  font-weight: bolder;
+}
+
+.category .link {
+  text-decoration: none;
+}
+
+.banner {
+  margin-top: 10px;
+}

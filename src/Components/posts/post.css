@@ -1,0 +1,87 @@
+.postParentDiv {
+  margin-top: 66px;
+}
+
+.moreView {
+  margin: 16px 16px 24px;
+  padding: 16px 16px 32px;
+  background-color: #ebeeef;
+  border-radius: 4px;
+}
+
+.recommendations .cards {
+  display: flex;
+}
+
+.moreView .cards {
+  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap; /* This allows cards to wrap to the next row */
+}
+
+.card {
+  margin-right: 118px;
+  padding: 13px;
+  width: 304px;
+  height: 242px;
+  display: inline-block;
+  cursor: pointer;
+  border: 2px solid;
+  margin-top: 46px;
+}
+
+.card .favorite {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.card .image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 62%;
+}
+
+.card .image img {
+  height: 100px;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 100%;
+  text-align: center;
+}
+.card .content .rate {
+  margin-top: 10px;
+  font-size: larger;
+  font-weight: bold;
+}
+.card .content .kilometer {
+  font-size: medium;
+}
+.card .content .name {
+  font-size: 16px;
+  width: 250px; /* Set the container width as needed */
+  white-space: nowrap; /* Prevents text wrapping */
+  overflow: hidden; /* Ensures content outside the box is hidden */
+  text-overflow: ellipsis; /* Adds the ellipsis (...) */
+}
+.card .date {
+  display: flex;
+  justify-content: flex-end;
+  font-size: small;
+}
+
+.recommendations {
+  margin: 16px 16px 24px;
+}
+
+.recommendations .heading span {
+  font-size: 24px;
+  color: #002f34;
+}

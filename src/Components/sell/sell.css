@@ -1,0 +1,48 @@
+.full-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.sell-product {
+  padding: 30px 50px;
+  margin-top: 200px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  max-width: 70%;
+}
+
+.add-product-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.add-product-form input {
+  border: 0.6px solid black;
+  border-radius: 7px;
+  padding: 10px;
+}
+
+.add-btn {
+  margin-top: 10px;
+  border: 0.9px solid black;
+  border-radius: 10px;
+}
+
+input {
+  border: solid 1px rgb(101, 163, 229);
+}
+.image {
+  border: none;
+}
+
+.redirect-link {
+  color: rgb(0, 102, 255);
+  text-decoration: underline;
+}

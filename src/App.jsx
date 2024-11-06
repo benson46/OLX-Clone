@@ -1,13 +1,36 @@
-import Footer from "./Components/Footer/Footer";
-import Navbar from "./Components/Navbar/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import LoginPage from "./Pages/Login";
+import SignUpPage from "./Pages/SignUp";
+import SellProduct from "./Pages/SellProduct";
+import Error from "./Pages/Error";
+import { AuthContext, FirebaseContext } from "./store/Context";
+import { useContext, useEffect } from "react";
 
 const App = () => {
-  return ( 
+  const { setUser } = useContext(AuthContext);
+  const { auth } = useContext(FirebaseContext);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+    return () => unsubscribe(); // Clean up the subscription on unmount
+  }, [auth, setUser]);
+
+  return (
     <div>
-      <Navbar/>
-      <Footer/>/
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/sellproduct" element={<SellProduct />} />
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </Router>
     </div>
-   );
-}
- 
+  );
+};
+
 export default App;

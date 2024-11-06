@@ -1,0 +1,46 @@
+.signUp-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUp-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 150px;
+  width: 450px;
+  height: 500px;
+  border: 0.9px solid black;
+  border-radius: 30px;
+  background-color: #e3e2e2;
+}
+.signUp-box .content {
+  margin: 70px;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+.signUp-box img {
+  width: 40%;
+  border-radius: 20px;
+}
+
+.signUp-box form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.signUp-box form input {
+  border: 0.6px solid black;
+  border-radius: 6px;
+  padding: 6px;
+}
+
+.signUp-box form input::placeholder {
+  color: rgb(48, 46, 46);
+}
