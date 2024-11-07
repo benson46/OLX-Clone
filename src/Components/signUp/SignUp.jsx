@@ -1,9 +1,11 @@
+import "./signUp.css";
+
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+
 import OlxLogo from "../../assets/olx-seeklogo.svg";
 import { FirebaseContext } from "../../store/Context";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-import "./signUp.css";
 
 const SignUp = () => {
   const [userName, setUserName] = useState("");
@@ -19,8 +21,8 @@ const SignUp = () => {
 
     if (!userName || !email || !password) {
       setMessage("Please fill in all fields.");
-    } else if (password.length <= 4) {
-      setMessage("Password length should be at least 5 characters.");
+    } else if (password.length < 6) {
+      setMessage("Password length should be at least 6 characters.");
     } else {
       setMessage("");
       try {

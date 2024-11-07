@@ -17,30 +17,40 @@ const ProductDetails = () => {
         setLoading(true);
         const docRef = doc(db, "products", productId);
         const productDoc = await getDoc(docRef);
-
+    
         if (productDoc.exists()) {
           setProduct(productDoc.data());
-          setLoading(false);
         } else {
           fetchProductFormApi();
-          setLoading(false);
         }
-
-        console.log(productDoc.data());
       } catch (error) {
         console.log(error);
+      } finally {
         setLoading(false);
       }
     };
-
+    
     const fetchProductFormApi = async () => {
-      setLoading(true);
-      const response = await axios.get(
-        `https://fakestoreapi.com/products/${productId}`
-      );
-      setProduct(response.data);
-      setLoading(false);
+      try {
+        setLoading(true);
+        const response = await axios.get(`https://fakestoreapi.com/products/${productId}`);
+
+        setProduct({
+          title: response.data.title,
+          price: response.data.price,
+          description: response.data.description,
+          image: response.data.image, // Adjust field name if needed
+          name: "Unknown Seller", // Default name if missing
+          email: "No Email", // Default email if missing
+        });
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
     };
+    
+    
 
     fetchProduct();
   }, []);
@@ -54,7 +64,7 @@ const ProductDetails = () => {
             <div className="product-image">
               <img
                 className="img"
-                src={product?.image || product?.imageUrl}
+                src={product?.image || product?.url}
                 alt=""
               />
             </div>
@@ -71,8 +81,8 @@ const ProductDetails = () => {
           <div className="seller-details">
             <h3>Seller's Details</h3>
 
-            <p>Seller's Name : {product?.sellerName || `user12`} </p>
-            <p>Seller's Email : {product?.sellerEmail || `No Email`}</p>
+            <p>Seller's Name : {product?.name || `user12`} </p>
+            <p>Seller's Email : {product?.email || `No Email`}</p>
           </div>
         </div>
       )}

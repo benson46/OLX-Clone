@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import "./sell.css";
-import { FirebaseContext, AuthContext } from "../../store/Context";
+import { AuthContext } from "../../store/Context";
 import { storage } from "../../config/Firebase"; // Import storage
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"; // Import required functions
 import { getFirestore, collection, addDoc } from "firebase/firestore"; // Import Firestore functions
@@ -12,28 +12,27 @@ const Sell = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(null);
   const [image, setImage] = useState(null);
-  const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext); // Access current user from AuthContext
   const date = new Date();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const db = getFirestore(); // Initialize Firestore
+  const db = getFirestore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(false);
+    setLoading(true);
     if (image) {
-      setLoading(true);
       const imageRef = ref(storage, `images/${image.name}`);
       uploadBytes(imageRef, image).then((snapshot) => {
         getDownloadURL(snapshot.ref).then((url) => {
           console.log(url);
           addDoc(collection(db, "products"), {
-            // Use addDoc and collection with db
             name,
             description,
             price,
             url,
+            email: user.email,
             userId: user.uid,
             createdAt: date.toDateString(),
           })
@@ -60,17 +59,21 @@ const Sell = () => {
               placeholder="Product Name"
               type="text"
               onChange={(e) => setName(e.target.value)}
+              required
             />
             <input
               type="text"
               placeholder="Product Description"
               onChange={(e) => setDescription(e.target.value)}
+              required
             />
             <input
               type="number"
               placeholder="Price"
               onChange={(e) => setPrice(e.target.value)}
+              required
             />
+            
             {image && (
               <img
                 style={{ width: "40%", height: "20%" }}
@@ -83,6 +86,7 @@ const Sell = () => {
               className="image"
               placeholder="Product Image"
               onChange={(e) => setImage(e.target.files[0])}
+              required
             />
             <button type="submit" className="add-btn">
               Add Product

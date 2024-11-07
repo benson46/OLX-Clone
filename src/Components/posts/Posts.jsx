@@ -4,17 +4,18 @@ import { collection, getDocs } from "firebase/firestore"; // Import necessary Fi
 import "./post.css";
 import axios from "axios";
 import Spinner from "../Spinner/Spinner";
+import { useNavigate } from "react-router-dom";
 
 function Posts() {
-  const { firestore } = useContext(FirebaseContext); // Use firestore from FirebaseContext
+  const { db } = useContext(FirebaseContext); // Use firestore from FirebaseContext
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        // Use firestore instead of db
-        const collectionRef = collection(firestore, "products");
+        const collectionRef = collection(db, "products");
         const dbRes = await getDocs(collectionRef);
 
         const fetchedDocuments = dbRes.docs.map((doc) => ({
@@ -32,9 +33,8 @@ function Posts() {
     };
 
     fetchProduct();
-  }, [firestore]);
+  }, [db]);
 
-  console.log(products);
   return (
     <div className="postParentDiv">
       {loading ? (
@@ -43,8 +43,7 @@ function Posts() {
         <div className="moreView">
           <div className="cards">
             {products.map((product) => (
-              <div className="card" key={product.id}>
-                <div className="favorite"></div>
+              <div className="card" key={product.id} onClick={()=>navigate(`/productview/${product.id}`)}>
                 <div className="image">
                   <img
                     src={product.url || product.image}
@@ -55,9 +54,6 @@ function Posts() {
                   <p className="rate">&#x20B9; {product.price}</p>
                   <h3 className="name">{product.name || product.title}</h3>
                   <span className="kilometer">{product.category}</span>
-                </div>
-                <div className="date">
-                  <span>{product.createdAt}</span>
                 </div>
               </div>
             ))}

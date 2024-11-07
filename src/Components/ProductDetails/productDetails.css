@@ -20,7 +20,8 @@
 }
 
 .img {
-  width: 80%;
+  width: 100%;
+  height: 90%;
 }
 
 .product-details {
@@ -28,6 +29,8 @@
   flex-direction: column;
   justify-content: center;
   flex: 1;
+  margin-left: 20px;
+
 }
 
 .product-details h2 {
@@ -37,4 +40,8 @@
   border-radius: 15px;
   color: rgb(237, 78, 78);
   background-color: rgb(219, 218, 218);
+}
+
+.product-img {
+  width: 500px;
 }

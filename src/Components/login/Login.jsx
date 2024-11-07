@@ -4,14 +4,12 @@ import "./login.css";
 import { FirebaseContext, AuthContext } from "../../store/Context"; // Import AuthContext
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import Spinner from "../Spinner/Spinner";
 
 const Login = () => {
   const { setUser, user } = useContext(AuthContext); // Use AuthContext here
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const { auth } = useContext(FirebaseContext);
   const navigate = useNavigate();
@@ -35,7 +33,6 @@ const Login = () => {
       const userData = await getDoc(userDocRef);
 
       setUser(userData.data());
-      console.log(user);
     } catch (error) {
       setError(error.message);
       console.log("Login failed:", error.message);
