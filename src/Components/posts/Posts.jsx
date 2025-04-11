@@ -53,7 +53,6 @@ function Posts() {
                 <div className="content">
                   <p className="rate">&#x20B9; {product.price}</p>
                   <h3 className="name">{product.name || product.title}</h3>
-                  <span className="kilometer">{product.category}</span>
                 </div>
               </div>
             ))}
