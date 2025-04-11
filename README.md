@@ -55,5 +55,5 @@ Component Composition patterns
 Have questions or want to collaborate?
 
 📧 [Email: bensonbaiju46@gmail.com](mailto:bensonbaiju46@gmail.com) 
-📞 [Phone: +91 89433 93066](tel:+918943393066) 
+📞 [Phone: +918943393066](tel:+918943393066) 
 💼 [LinkedIn: LinkedIn Profile](https://linkedin.com/in/bensonbvaroor)  
